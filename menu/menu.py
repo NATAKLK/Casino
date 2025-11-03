@@ -1,42 +1,40 @@
-
-from extras.utils import *
+from rich.console import Console
+from rich.align import Align
+from rich.panel import Panel
+from rich.text import Text
 import shutil
 import os
 
+console = Console()
+
 def menu_principal():
-    list_colors()
-    print(f"""
-*------------------------------------------*#
+    # Create menu text with colors
+    menu_text = Text()
+    menu_text.append("\n\n")
+    menu_text.append("Menu Principal", style="bold red blink")
+    menu_text.append("\n\n")
+    menu_text.append("(1) Juegos\n\n", style="cyan")
+    menu_text.append("(2) Estadisticas\n\n", style="cyan")
+    menu_text.append("(3) Reglas de juegos\n\n", style="cyan")
+    menu_text.append("(4) Banco\n\n", style="cyan")
+    menu_text.append("--------------------\n", style="white")
+    menu_text.append("(5) SALIR", style="red")
+    menu_text.append("\n\n")
 
+    # Create panel with aligned text
+    panel = Panel(
+        Align.center(menu_text),
+        border_style="red",
+        title="Casino",
+        padding=(2, 4)
+    )
 
-
-                 ----
-            {RED_BRIGHT}{BLINK}{UNDERLINE}M{RESET}{BLINK}{UNDERLINE}e{RED_BRIGHT}n{RESET}{BLINK}{UNDERLINE}u {RED_BRIGHT}P{RESET}{BLINK}{UNDERLINE}r{RED_BRIGHT}i{RESET}{BLINK}{UNDERLINE}n{RED_BRIGHT}c{RESET}{BLINK}{UNDERLINE}i{RED_BRIGHT}{BLINK}{UNDERLINE}p{RESET}{BLINK}{UNDERLINE}a{RED_BRIGHT}l{RESET}
-                 ----
-            
-    (1)        Juegos 
-
-    (2)     Estadisticas
-
-    (3)    Reglas de juegos
-
-    (4)        Banco
-
-                 ----
+    # Clear screen first (optional)
+    console.clear()
     
-    (5)        SALIR
-                
-*------------------------------------------*
+    # Print centered panel
+    console.print(Align.center(panel, vertical=True))
 
-
-""")
-    cols, rows = shutil.get_terminal_size()
-    lines = menu_principal.splitlines()
-    top_pad = max(0, (rows - len(lines)) // 2)
-
-    print("\n" * top_pad, end="")
-    for line in lines:
-        print(line.center(cols))
-    choice = input("Please select an option (1-3): ")
+    choice = input("\nPlease select an option (1-5): ")
     return choice
 
