@@ -1,4 +1,5 @@
 from enum import Enum
+from extras.utils import *
 import random
 import time
 import os
@@ -11,10 +12,6 @@ C_ROJO = '\033[91m'
 C_AMARILLO = '\033[93m'
 C_VERDE = '\033[92m'
 C_CYAN = '\033[96m'
-
-def limpiar_pantalla():
-    """Limpia la terminal."""
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 # ===================================================================== Cartas ======================================================================
 
@@ -117,7 +114,7 @@ def ask_play_again():
             print("Escoje una opcion válida (si/no).")
 
 def play():
-    limpiar_pantalla()
+    clean_screen()
     mano_user = []
     sum_user = 0
     user_playing = True
@@ -130,7 +127,7 @@ def play():
         
         sum_user = sum(carta.value for carta in mano_user)
 
-        limpiar_pantalla()
+        clean_screen()
         print(f"{C_VERDE}¡Nueva carta!{C_RESET} Sacaste un {card_user.rank_para_mostrar} de {card_user.tipo.value[0]} {card_user.tipo.value[1]}")
         
         print("\nTu mano actual:")
@@ -165,7 +162,7 @@ def play():
     sum_house = 0
 
     if sum_user <= 21:
-        limpiar_pantalla()
+        clean_screen()
         print(f"{C_CYAN}--- Turno de la casa ---{C_RESET}")
         print("Tu mano final:")
         imprimir_cartas(mano_user)
@@ -178,7 +175,7 @@ def play():
             mano_house.append(card_house)
             sum_house = sum(carta.value for carta in mano_house)
 
-            limpiar_pantalla()
+            clean_screen()
             print(f"{C_CYAN}--- Turno de la casa ---{C_RESET}")
             print("Tu mano final:")
             imprimir_cartas(mano_user)
@@ -189,7 +186,7 @@ def play():
             print(f"{C_AMARILLO}Total de la casa: {sum_house}{C_RESET}")
             
             time.sleep(2)
-
+ 
             if sum_house >= 17 and sum_house >= sum_user:
                  break
             if sum_house > 21:

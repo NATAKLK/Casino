@@ -1,57 +1,133 @@
 import os
-# ...existing code...
-# Colores ANSI para la terminal 
-C_RESET = '\033[0m'
 
-# Estilos
-C_BOLD = '\033[1m'
-C_DIM = '\033[2m'
-C_ITALIC = '\033[3m'
-C_UNDERLINE = '\033[4m'
-C_BLINK = '\033[5m'
-C_REVERSE = '\033[7m'
-C_HIDDEN = '\033[8m'
 
-# Colores foreground (estándar)
-C_BLACK = '\033[30m'
-C_ROJO = '\033[31m'       # ya usado en el código
-C_VERDE = '\033[32m'      # ya usado en el código
-C_AMARILLO = '\033[33m'   # ya usado en el código
-C_AZUL = '\033[34m'
-C_MAGENTA = '\033[35m'
-C_CYAN = '\033[36m'       # ya usado en el código
-C_BLANCO = '\033[37m'
-# Colores foreground brillantes
-C_BLACK_BRIGHT = '\033[90m'
-C_ROJO_BRIGHT = '\033[91m'
-C_VERDE_BRIGHT = '\033[92m'
-C_AMARILLO_BRIGHT = '\033[93m'
-C_AZUL_BRIGHT = '\033[94m'
-C_MAGENTA_BRIGHT = '\033[95m'
-C_CYAN_BRIGHT = '\033[96m'
-C_BLANCO_BRIGHT = '\033[97m'
+################################################## COLORS ##################################################
 
-# Backgrounds
+# ANSI color constants for the terminal (English names)
+RESET = '\033[0m'
+
+# Styles
+BOLD = '\033[1m'
+DIM = '\033[2m'
+ITALIC = '\033[3m'
+UNDERLINE = '\033[4m'
+BLINK = '\033[5m'
+REVERSE = '\033[7m'
+HIDDEN = '\033[8m'
+
+# Foreground colors (standard)
+BLACK = '\033[30m'
+RED = '\033[31m'
+GREEN = '\033[32m'
+YELLOW = '\033[33m'
+BLUE = '\033[34m'
+MAGENTA = '\033[35m'
+CYAN = '\033[36m'
+WHITE = '\033[37m'
+
+# Foreground bright colors
+BLACK_BRIGHT = '\033[90m'
+RED_BRIGHT = '\033[91m'
+GREEN_BRIGHT = '\033[92m'
+YELLOW_BRIGHT = '\033[93m'
+BLUE_BRIGHT = '\033[94m'
+MAGENTA_BRIGHT = '\033[95m'
+CYAN_BRIGHT = '\033[96m'
+WHITE_BRIGHT = '\033[97m'
+
+# Background colors
 BG_BLACK = '\033[40m'
-BG_ROJO = '\033[41m'
-BG_VERDE = '\033[42m'
-BG_AMARILLO = '\033[43m'
-BG_AZUL = '\033[44m'
+BG_RED = '\033[41m'
+BG_GREEN = '\033[42m'
+BG_YELLOW = '\033[43m'
+BG_BLUE = '\033[44m'
 BG_MAGENTA = '\033[45m'
 BG_CYAN = '\033[46m'
-BG_BLANCO = '\033[47m'
-# Backgrounds brillantes
+BG_WHITE = '\033[47m'
+
+# Background bright colors
 BG_BLACK_BRIGHT = '\033[100m'
-BG_ROJO_BRIGHT = '\033[101m'
-BG_VERDE_BRIGHT = '\033[102m'
-BG_AMARILLO_BRIGHT = '\033[103m'
-BG_AZUL_BRIGHT = '\033[104m'
+BG_RED_BRIGHT = '\033[101m'
+BG_GREEN_BRIGHT = '\033[102m'
+BG_YELLOW_BRIGHT = '\033[103m'
+BG_BLUE_BRIGHT = '\033[104m'
 BG_MAGENTA_BRIGHT = '\033[105m'
 BG_CYAN_BRIGHT = '\033[106m'
-BG_BLANCO_BRIGHT = '\033[107m'
+BG_WHITE_BRIGHT = '\033[107m'
 
-# Mapa completo (útil para listar o usar por nombre)
+# Complete map (useful to list or access by name)
 ALL_ANSI_COLORS = {
+    "RESET": RESET,
+    "BOLD": BOLD, "DIM": DIM, "ITALIC": ITALIC, "UNDERLINE": UNDERLINE,
+    "BLINK": BLINK, "REVERSE": REVERSE, "HIDDEN": HIDDEN,
+    "BLACK": BLACK, "RED": RED, "GREEN": GREEN, "YELLOW": YELLOW,
+    "BLUE": BLUE, "MAGENTA": MAGENTA, "CYAN": CYAN, "WHITE": WHITE,
+    "BLACK_BRIGHT": BLACK_BRIGHT, "RED_BRIGHT": RED_BRIGHT, "GREEN_BRIGHT": GREEN_BRIGHT,
+    "YELLOW_BRIGHT": YELLOW_BRIGHT, "BLUE_BRIGHT": BLUE_BRIGHT, "MAGENTA_BRIGHT": MAGENTA_BRIGHT,
+    "CYAN_BRIGHT": CYAN_BRIGHT, "WHITE_BRIGHT": WHITE_BRIGHT,
+    "BG_BLACK": BG_BLACK, "BG_RED": BG_RED, "BG_GREEN": BG_GREEN, "BG_YELLOW": BG_YELLOW,
+    "BG_BLUE": BG_BLUE, "BG_MAGENTA": BG_MAGENTA, "BG_CYAN": BG_CYAN, "BG_WHITE": BG_WHITE,
+    "BG_BLACK_BRIGHT": BG_BLACK_BRIGHT, "BG_RED_BRIGHT": BG_RED_BRIGHT, "BG_GREEN_BRIGHT": BG_GREEN_BRIGHT,
+    "BG_YELLOW_BRIGHT": BG_YELLOW_BRIGHT, "BG_BLUE_BRIGHT": BG_BLUE_BRIGHT, "BG_MAGENTA_BRIGHT": BG_MAGENTA_BRIGHT,
+    "BG_CYAN_BRIGHT": BG_CYAN_BRIGHT, "BG_WHITE_BRIGHT": BG_WHITE_BRIGHT,
+}
+
+def list_colors():
+    """Print a sample of available ANSI colors (for terminals that support ANSI)."""
+    for name, code in ALL_ANSI_COLORS.items():
+        if name == "RESET":
+            continue
+        print(f"{code}{name}{RESET}", end="  ")
+    print()
+
+# --- Backwards compatibility aliases (Spanish names preserved) ---
+C_RESET = RESET
+
+C_BOLD = BOLD
+C_DIM = DIM
+C_ITALIC = ITALIC
+C_UNDERLINE = UNDERLINE
+C_BLINK = BLINK
+C_REVERSE = REVERSE
+C_HIDDEN = HIDDEN
+
+C_BLACK = BLACK
+C_ROJO = RED
+C_VERDE = GREEN
+C_AMARILLO = YELLOW
+C_AZUL = BLUE
+C_MAGENTA = MAGENTA
+C_CYAN = CYAN
+C_BLANCO = WHITE
+
+C_BLACK_BRIGHT = BLACK_BRIGHT
+C_ROJO_BRIGHT = RED_BRIGHT
+C_VERDE_BRIGHT = GREEN_BRIGHT
+C_AMARILLO_BRIGHT = YELLOW_BRIGHT
+C_AZUL_BRIGHT = BLUE_BRIGHT
+C_MAGENTA_BRIGHT = MAGENTA_BRIGHT
+C_CYAN_BRIGHT = CYAN_BRIGHT
+C_BLANCO_BRIGHT = WHITE_BRIGHT
+
+BG_BLACK = BG_BLACK
+BG_ROJO = BG_RED
+BG_VERDE = BG_GREEN
+BG_AMARILLO = BG_YELLOW
+BG_AZUL = BG_BLUE
+BG_MAGENTA = BG_MAGENTA
+BG_CYAN = BG_CYAN
+BG_BLANCO = BG_WHITE
+
+BG_BLACK_BRIGHT = BG_BLACK_BRIGHT
+BG_ROJO_BRIGHT = BG_RED_BRIGHT
+BG_VERDE_BRIGHT = BG_GREEN_BRIGHT
+BG_AMARILLO_BRIGHT = BG_YELLOW_BRIGHT
+BG_AZUL_BRIGHT = BG_BLUE_BRIGHT
+BG_MAGENTA_BRIGHT = BG_MAGENTA_BRIGHT
+BG_CYAN_BRIGHT = BG_CYAN_BRIGHT
+BG_BLANCO_BRIGHT = BG_WHITE_BRIGHT
+
+ALL_ANSI_COLORS_SPANISH_KEYS = {  # optional: keep the original mapping keys in Spanish too
     "RESET": C_RESET,
     "BOLD": C_BOLD, "DIM": C_DIM, "ITALIC": C_ITALIC, "UNDERLINE": C_UNDERLINE,
     "BLINK": C_BLINK, "REVERSE": C_REVERSE, "HIDDEN": C_HIDDEN,
@@ -62,17 +138,15 @@ ALL_ANSI_COLORS = {
     "CYAN_BRIGHT": C_CYAN_BRIGHT, "BLANCO_BRIGHT": C_BLANCO_BRIGHT,
     "BG_BLACK": BG_BLACK, "BG_ROJO": BG_ROJO, "BG_VERDE": BG_VERDE, "BG_AMARILLO": BG_AMARILLO,
     "BG_AZUL": BG_AZUL, "BG_MAGENTA": BG_MAGENTA, "BG_CYAN": BG_CYAN, "BG_BLANCO": BG_BLANCO,
-    "BG_BLACK_BRIGHT": BG_BLACK_BRIGHT, "BG_ROJO_BRIGHT": BG_ROJO_BRIGHT, "BG_VERDE_BRIGHT": BG_VERDE_BRIGHT,
-    "BG_AMARILLO_BRIGHT": BG_AMARILLO_BRIGHT, "BG_AZUL_BRIGHT": BG_AZUL_BRIGHT, "BG_MAGENTA_BRIGHT": BG_MAGENTA_BRIGHT,
-    "BG_CYAN_BRIGHT": BG_CYAN_BRIGHT, "BG_BLANCO_BRIGHT": BG_BLANCO_BRIGHT,
 }
     
 def listar_colores():
-    """Imprime una muestra de los colores disponibles (para terminales que soporten ANSI)."""
-    for nombre, codigo in ALL_ANSI_COLORS.items():
-        # evitar imprimir RESET solo como muestra
-        if nombre == "RESET":
-            continue
-        print(f"{codigo}{nombre}{C_RESET}", end="  ")
-    print()
-# ...existing code...
+    """Compatibility wrapper for the original Spanish function name."""
+    return list_colors()
+
+
+################################################## LIMPIAR PANTALLA ##################################################
+
+def clean_screen():
+    """Limpia la terminal."""
+    os.system('cls' if os.name == 'nt' else 'clear')
