@@ -6,7 +6,9 @@ import os
 def menu_principal():
     list_colors()
     print(f"""
-*------------------------------------------*
+*------------------------------------------*#
+
+
 
                  ----
             {RED_BRIGHT}{BLINK}{UNDERLINE}M{RESET}{BLINK}{UNDERLINE}e{RED_BRIGHT}n{RESET}{BLINK}{UNDERLINE}u {RED_BRIGHT}P{RESET}{BLINK}{UNDERLINE}r{RED_BRIGHT}i{RESET}{BLINK}{UNDERLINE}n{RED_BRIGHT}c{RESET}{BLINK}{UNDERLINE}i{RED_BRIGHT}{BLINK}{UNDERLINE}p{RESET}{BLINK}{UNDERLINE}a{RED_BRIGHT}l{RESET}
