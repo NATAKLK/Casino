@@ -113,7 +113,7 @@ def ask_play_again():
         else:
             print("Escoje una opcion válida (si/no).")
 
-def play():
+def play_blackjack():
     clean_screen()
     mano_user = []
     sum_user = 0
@@ -215,7 +215,7 @@ def play():
 
 if __name__ == "__main__":
     while True:
-        play()
+        play_blackjack()
         time.sleep(2)
         if ask_play_again() == False:
             break

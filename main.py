@@ -1,9 +1,8 @@
 from games.blackjack import *
-from games.ships import *
+from games.test.ships import *
 from menu.menu import *
 
-#ship_select()
-play()
+menu_principal()
 
 """ 
 if __name__ == "__main__":

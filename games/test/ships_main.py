@@ -2,7 +2,7 @@ import random
 import os
 import time
 
-MAX_NPC_SHIPS = 7
+MAX_NPC_SHIPS = 5
 
 ship_name_list = ["Hera","Prometeo","Afrodita","Apolo","Atenea","Ares","Poseidon","Odin","Hermes","Zeus","Cronos","Aquiles","Perceo","Artemisa","Deimos","Odiseo","Ades"]
 ship_num = len(ship_name_list)
@@ -120,7 +120,8 @@ def ship_game():
         else:
             continue
 
-        
+# Mas interactividad en el juego:
+#   - Que al hacer click, enviar una letra u cualquier otra cosa, que vaya aumentando la forma ne la que puedas ganar
 
     
 

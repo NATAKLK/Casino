@@ -14,7 +14,8 @@ class Ruleta:
     def random_roulette():
         return Ruleta(random.choice(Ruleta.colorsr()), random.randint(1, 36))
     
-
+def play_roulette():
+    ...
 ruleta1 = Ruleta.random_roulette()
 
 print(ruleta1.colors_roulette)
