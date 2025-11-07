@@ -3,7 +3,7 @@ from rich.align import Align
 from rich.panel import Panel
 from rich.text import Text
 from rich.layout import Layout
-from games.horses import *
+from games.ships import *
 import os
 import shutil
 
@@ -45,7 +45,7 @@ def menu_principal():
 
     choice = int(input("\nPlease select an option (1-5): "))
     if choice  == 1:
-        hOrsE_raceee()
+        ship_select()
     
 
 

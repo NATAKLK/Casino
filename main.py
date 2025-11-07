@@ -1,7 +1,10 @@
 from games.blackjack import *
+from games.ships import *
 from menu.menu import *
 
-menu_principal()
+#ship_select()
+play()
+
 """ 
 if __name__ == "__main__":
     while True:
