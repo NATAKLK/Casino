@@ -99,17 +99,18 @@ def imprimir_cartas(cartas: list):
 # ====================================================================== Juego ======================================================================
 
 def ask_play_again():
-    print("\n--- ¿Jugar de nuevo? ---")
-    print("      (Si / No)")
+    print()
+    print(f"{C_BOLD}{C_BLINK}{C_ROJO}\n--- ¿Jugar de nuevo? ---{C_RESET}")
+    print(f"      ({C_VERDE}Si{C_RESET} / {C_ROJO}No{C_RESET})")
     
     while True:
         play_again = input("> ").lower()
         if play_again in ("yes", "si", "y", "s"):
             time.sleep(1)
-            return True
+            play_blackjack()
         elif play_again in ("no", "n", "nou", "nah"):
             print("\n¡Hasta luego! Gracias por jugar.")
-            return False
+            break
         else:
             print("Escoje una opcion válida (si/no).")
 
@@ -186,15 +187,17 @@ def play_blackjack():
             print(f"{C_AMARILLO}Total de la casa: {sum_house}{C_RESET}")
             
             time.sleep(2)
- 
+
             if sum_house >= 17 and sum_house >= sum_user:
-                 break
+                break
             if sum_house > 21:
                 break
         
         print("\n--- 🏆 Resultados 🏆 ---")
         print(f"{C_VERDE}Tu puntuación: {sum_user}{C_RESET}")
         print(f"{C_ROJO}Puntuación de la casa: {sum_house}{C_RESET}\n")
+
+        ask_play_again()
 
         if sum_house > 21:
             print(f"{C_VERDE}¡Haz ganado!{C_RESET} La casa se pasó de 21.")
@@ -209,13 +212,4 @@ def play_blackjack():
         print("\n--- 🏆 Resultados 🏆 ---")
         print(f"{C_ROJO}Tu puntuación: {sum_user}{C_RESET}")
         print(f"{C_ROJO}Haz perdido, te pasaste de 21.{C_RESET}")
-
-
-# ======================================================================= Main ======================================================================
-
-if __name__ == "__main__":
-    while True:
-        play_blackjack()
-        time.sleep(2)
-        if ask_play_again() == False:
-            break
+        ask_play_again()

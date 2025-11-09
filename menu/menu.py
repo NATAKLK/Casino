@@ -117,9 +117,7 @@ def menu_games():
         choice = int(input())
         if choice == 1:
             clean_screen()
-            console.print("On building, please be patient. Tanks!", style ="bold red blink")
-            time.sleep(2)
-            menu_games()
+            play_ships()
         elif choice == 2:
             play_blackjack()
         elif choice == 3:
