@@ -122,7 +122,7 @@ def menu_games():
             play_blackjack()
         elif choice == 3:
             clean_screen()
-            console.print("On building, please be patient. Tanks!", style ="bold red blink")
+            play_hangman()
             time.sleep(2)
             menu_games()
         elif choice == 4:
