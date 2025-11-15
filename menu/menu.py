@@ -4,9 +4,9 @@ from rich.panel import Panel
 from rich.text import Text
 from rich.layout import Layout
 from games.test.ships import *
-from games.blackjack import *
-from games.hangman import *
-from games.roulette import *
+from games.blackjack.blackjack import *
+from games.hangman.hangman import *
+from games.roulette.roulette import *
 import os
 from extras.utils import *
 import shutil
