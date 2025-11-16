@@ -1,5 +1,3 @@
-from games.blackjack.blackjack import *
-from games.test.ships import *
 from menu.menu import *
 
 menu_principal()

@@ -7,11 +7,10 @@ from games.test.ships import *
 from games.blackjack.blackjack import *
 from games.hangman.hangman import *
 from games.roulette.roulette import *
-import os
+from games.rock_paper_scissors.rock_paper_scissors import *
 from extras.utils import *
 import shutil
 
-console = Console()
 def menu_principal():
     # Obtener dimensiones de la terminal
     terminal_width, terminal_height = shutil.get_terminal_size()
@@ -97,8 +96,9 @@ def menu_games():
     menu_text.append("(2) Blackjack\n\n", style="cyan")
     menu_text.append("(3) HangMan\n\n", style="cyan")
     menu_text.append("(4) Roulette\n\n", style="cyan")
+    menu_text.append("(5) Rock Paper Scissors\n\n", style="cyan")
     menu_text.append("--------------------\n", style="white")
-    menu_text.append("(5) SALIR", style="red")
+    menu_text.append("(6) SALIR", style="red")
     menu_text.append("\n")
 
     panel_games = Panel(
@@ -123,14 +123,15 @@ def menu_games():
         elif choice == 3:
             clean_screen()
             play_hangman()
-            time.sleep(2)
-            menu_games()
         elif choice == 4:
             clean_screen()
             console.print("On building, please be patient. Tanks!", style ="bold red blink")
             time.sleep(2)
             menu_games()
         elif choice == 5:
+            clean_screen()
+            play_rockpaperscissors()
+        elif choice == 6:
             clean_screen()
             menu_principal()
         else:

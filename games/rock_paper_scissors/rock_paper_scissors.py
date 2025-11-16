@@ -16,7 +16,7 @@ def play_question():
     choice = input("> ").lower()
     if choice in ("1","yes","si","s","y"):
         clear_console()
-        play_game()
+        play_rockpaperscissors()
     elif choice in ("2","no","n","nou"):
         print("Vuelve pronto!")
     else:
@@ -24,7 +24,7 @@ def play_question():
         clear_console()
         play_question()
         
-def play_game():
+def play_rockpaperscissors():
     user_selection.clear()
     print(""""
     ¿Cuál es tu elección?
